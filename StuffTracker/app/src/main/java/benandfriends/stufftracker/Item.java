@@ -16,7 +16,7 @@ public class Item {
     private String upc;
     private Location location;
     private Boolean opened;
-    private Date dateBaught;
+    private Date dateBought;
     private Date dateExpires;
     private Boolean notifyWhenExpiring;
 
@@ -26,7 +26,7 @@ public class Item {
         this.upc = upc;
         this.location = location;
         this.opened = opened;
-        this.dateBaught = dateBaught;
+        this.dateBought = dateBaught;
     }
 
     public String getName() {
@@ -77,12 +77,12 @@ public class Item {
         this.opened = opened;
     }
 
-    public Date getDateBaught() {
-        return dateBaught;
+    public Date getDateBought() {
+        return dateBought;
     }
 
-    public void setDateBaught(Date dateBaught) {
-        this.dateBaught = dateBaught;
+    public void setDateBought(Date dateBought) {
+        this.dateBought = dateBought;
     }
 
     public Date getDateExpires() {
