@@ -20,13 +20,13 @@ public class Item {
     private Date dateExpires;
     private Boolean notifyWhenExpiring;
 
-    public Item(String name, int id, String upc, Location location, Boolean opened, Date dateBaught) {
+    public Item(String name, int id, String upc, Location location, Boolean opened, Date dateBought) {
         this.name = name;
         this.id = id;
         this.upc = upc;
         this.location = location;
         this.opened = opened;
-        this.dateBought = dateBaught;
+        this.dateBought = dateBought;
     }
 
     public String getName() {
