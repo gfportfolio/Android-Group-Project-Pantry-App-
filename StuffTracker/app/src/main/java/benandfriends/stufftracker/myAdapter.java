@@ -6,43 +6,72 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by gavinfarnsworth on 3/31/15.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private String[] mDataset;
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
-    public static class ViewHolder extends  RecyclerView.ViewHolder{
+    private ArrayList<Item> myDataset;
+
+
+
+
+
+    /*public static class ViewHolder extends  RecyclerView.ViewHolder{
         public TextView mTextView;
         public ViewHolder(TextView v){
             super(v);
             mTextView = v;
         }
-    }
+    }*/
 
-    public MyAdapter(String[] myDataset){
+    public MyAdapter(ArrayList<Item> myDataset){
 
-        mDataset = myDataset;
+        myDataset = myDataset;
     }
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.my_text_view, parent, false);
 
-        ViewHolder vh = new ViewHolder((TextView) v);
+        ItemViewHolder vh = new ItemViewHolder((TextView) v);
         
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTextView.setText(mDataset[position]);
+    public void onBindViewHolder(ItemViewHolder holder, int position) {
+        Item i = myDataset.get(position);
+        holder.vName.setText(i.getName());
+        holder.vLocation.setText(i.getLocation().getName());
+        holder.vExpDate.setText(i.getDateExpires().toString());
     }
 
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return myDataset.size();
+    }
+
+
+
+    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+        protected TextView vName;
+        protected TextView vLocation;
+        protected TextView vExpDate;
+
+
+        public ItemViewHolder(View v) {
+            super(v);
+            vName = (TextView) v.findViewById(R.id.itemName);
+            vLocation = (TextView) v.findViewById(R.id.itemLocation);
+            vExpDate = (TextView) v.findViewById(R.id.itemExpDate);
+
+
+        }
     }
 }
