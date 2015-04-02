@@ -11,5 +11,4 @@ public class ItemCard {
     protected static final String LOCATION_PREFIX = "Location_";
     protected static final String EXPIRE_PREFIX = "Expire_";
 
-
 }

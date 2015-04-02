@@ -16,9 +16,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
     private ArrayList<Item> myDataset;
 
 
-
-
-
     /*public static class ViewHolder extends  RecyclerView.ViewHolder{
         public TextView mTextView;
         public ViewHolder(TextView v){
@@ -35,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.my_text_view, parent, false);
+                .inflate(R.layout.card_view, parent, false);
 
         ItemViewHolder vh = new ItemViewHolder((TextView) v);
         
