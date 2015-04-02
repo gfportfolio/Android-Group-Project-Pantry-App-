@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:background="#00000"
-            android:text="contact det"
+            android:text="title test"
             android:gravity="center_vertical"
             android:textColor="@android:color/white"
             android:textSize="14dp"/>
