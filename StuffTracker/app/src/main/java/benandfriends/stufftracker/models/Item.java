@@ -8,11 +8,11 @@ import java.util.Date;
 public final class Item {
 
     private String name = "";
+    private String upc;
     private Bitmap image;
-    private Boolean opened;
+    private Boolean isOpened;
     private Date datePurchased;
     private Date dateExpires;
-    private Boolean notifyWhenExpiring;
 
 
     public Item(String name) {
@@ -25,13 +25,18 @@ public final class Item {
     }
 
 
+    public String getUpc() {
+        return upc;
+    }
+
+
     public Bitmap getImage() {
         return image;
     }
 
 
-    public Boolean getOpened() {
-        return opened;
+    public Boolean getIsOpened() {
+        return isOpened;
     }
 
 
@@ -42,11 +47,6 @@ public final class Item {
 
     public Date getDateExpires() {
         return dateExpires;
-    }
-
-
-    public Boolean getNotifyWhenExpiring() {
-        return notifyWhenExpiring;
     }
 
 
@@ -63,8 +63,8 @@ public final class Item {
     }
 
 
-    public void setOpened(Boolean opened) {
-        this.opened = opened;
+    public void setIsOpened(Boolean isOpened) {
+        this.isOpened = isOpened;
     }
 
 
@@ -77,10 +77,6 @@ public final class Item {
         this.dateExpires = dateExpires;
     }
 
-
-    public void setNotifyWhenExpiring(Boolean notifyWhenExpiring) {
-        this.notifyWhenExpiring = notifyWhenExpiring;
-    }
 
 
 }
