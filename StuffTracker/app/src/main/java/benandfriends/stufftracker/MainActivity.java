@@ -15,10 +15,13 @@ public class MainActivity extends Activity {
     private RecyclerView.LayoutManager mLayoutManager;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Controller.load();
 
         mRecyclerView=(RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -27,7 +30,7 @@ public class MainActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //mAdapter = new MyAdapter();
+        mAdapter = new MyAdapter(Controller.getItems());
         mRecyclerView.setAdapter(mAdapter);
 
     }

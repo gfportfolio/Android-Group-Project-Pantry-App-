@@ -15,6 +15,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     private ArrayList<Item> myDataset;
 
+    
 
     /*public static class ViewHolder extends  RecyclerView.ViewHolder{
         public TextView mTextView;
