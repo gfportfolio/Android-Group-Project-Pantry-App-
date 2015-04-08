@@ -27,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     public MyAdapter(ArrayList<Item> myDataset){
 
-        myDataset = myDataset;
+       this.myDataset = myDataset;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
 
-        ItemViewHolder vh = new ItemViewHolder((TextView) v);
+        ItemViewHolder vh = new ItemViewHolder( v);
         
         return vh;
     }
@@ -45,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         Item i = myDataset.get(position);
         holder.vName.setText(i.getName());
         holder.vLocation.setText(i.getLocation().getName());
-        holder.vExpDate.setText(i.getDateExpires().toString());
+        //holder.vExpDate.setText(i.getDateExpires().toString());
     }
 
 
