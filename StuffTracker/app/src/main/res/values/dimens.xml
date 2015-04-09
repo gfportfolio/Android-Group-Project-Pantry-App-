@@ -20,6 +20,8 @@
     <color name="C200">#FFFF00</color>
     <color name="C400">#FFEA00</color>
     <color name="C700">#FFD600</color>
+    <dimen name="largefont">25dp</dimen>
+    <dimen name="smallfont">20dp</dimen>
 
 
 </resources>
