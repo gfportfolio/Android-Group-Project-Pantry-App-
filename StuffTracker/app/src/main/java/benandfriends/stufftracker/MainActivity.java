@@ -6,9 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import benandfriends.stufftracker.R;
 
 
 public class MainActivity extends Activity {
+
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -16,10 +18,12 @@ public class MainActivity extends Activity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
 
@@ -34,6 +38,13 @@ public class MainActivity extends Activity {
 
         mAdapter = new MyAdapter(Controller.getItems());
         mRecyclerView.setAdapter(mAdapter);
+
+
+        //Example code for attaching FAB to view. Becomes visible when an attached target is
+        //scrolled up and invisible when scrolled down
+        /*ListView listView = (ListView) findViewById(android.R.id.list);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToListView(listView);*/
 
     }
 
