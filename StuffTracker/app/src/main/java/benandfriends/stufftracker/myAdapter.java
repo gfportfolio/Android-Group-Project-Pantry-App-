@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 /**
@@ -42,10 +43,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Item i = myDataset.get(position);
+        holder.vTitle.setText(i.getName());
         holder.vName.setText(i.getName());
         holder.vLocation.setText(i.getLocation().getName());
         if(i.getDateExpires()!=null){
-            holder.vExpDate.setText(i.getDateExpires().toString());
+            String date =android.text.format.DateFormat.format("MM-dd-yyyy", i.getDateExpires()).toString();
+            holder.vExpDate.setText(date);
+        }
+        else{
+            holder.vExpDate.setText("");
         }
 
     }
@@ -62,14 +68,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         protected TextView vName;
         protected TextView vLocation;
         protected TextView vExpDate;
-
+        protected TextView vTitle;
 
         public ItemViewHolder(View v) {
             super(v);
             vName = (TextView) v.findViewById(R.id.itemName);
             vLocation = (TextView) v.findViewById(R.id.itemLocation);
             vExpDate = (TextView) v.findViewById(R.id.itemExpDate);
-
+            vTitle = (TextView) v.findViewById(R.id.title);
 
         }
     }
