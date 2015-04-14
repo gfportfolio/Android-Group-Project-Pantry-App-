@@ -11,6 +11,7 @@ public class Container {
     private Bitmap image;
     private Location location;
 
+
     public Container(String name) {
         this.name = name;
     }

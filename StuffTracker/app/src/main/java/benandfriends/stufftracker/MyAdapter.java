@@ -1,10 +1,13 @@
 package benandfriends.stufftracker;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -12,9 +15,9 @@ import java.util.ArrayList;
 /**
  * Created by gavinfarnsworth on 3/31/15.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> implements View.OnClickListener{
 
-    private ArrayList<Item> myDataset;
+    private ArrayList<ItemMain> myDataset;
 
     
 
@@ -26,7 +29,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         }
     }*/
 
-    public MyAdapter(ArrayList<Item> myDataset){
+    public MyAdapter(ArrayList<ItemMain> myDataset){
 
        this.myDataset = myDataset;
     }
@@ -35,6 +38,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
+
+
+        v.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Log.i("Click",v.getId()+"");
+
+            }
+        });
         ItemViewHolder vh = new ItemViewHolder( v);
 
         return vh;
@@ -42,18 +55,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        Item i = myDataset.get(position);
-        holder.vTitle.setText(i.getName());
-        holder.vName.setText(i.getName());
-        holder.vLocation.setText(i.getLocation().getName());
-        if(i.getDateExpires()!=null){
-            String date =android.text.format.DateFormat.format("MM-dd-yyyy", i.getDateExpires()).toString();
-            holder.vExpDate.setText(date);
-        }
-        else{
-            holder.vExpDate.setText("");
-        }
-
+        ItemMain i = myDataset.get(position);
+        holder.vName.setText(i.getTitle());
+        holder.vLocation.setText(i.getCount()+"");
+        holder.vImg.setImageResource(i.getImage());
+        holder.itemView.setId(position);
     }
 
 
@@ -62,21 +68,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> {
         return myDataset.size();
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
         protected TextView vName;
         protected TextView vLocation;
-        protected TextView vExpDate;
-        protected TextView vTitle;
+        protected ImageView vImg;
 
         public ItemViewHolder(View v) {
             super(v);
             vName = (TextView) v.findViewById(R.id.itemName);
-            vLocation = (TextView) v.findViewById(R.id.itemLocation);
-            vExpDate = (TextView) v.findViewById(R.id.itemExpDate);
-            vTitle = (TextView) v.findViewById(R.id.title);
-
+            vLocation = (TextView) v.findViewById(R.id.itemCount);
+            vImg = (ImageView) v.findViewById(R.id.imageView);
         }
     }
 }
