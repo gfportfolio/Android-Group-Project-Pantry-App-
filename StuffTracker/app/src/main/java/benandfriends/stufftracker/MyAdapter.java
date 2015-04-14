@@ -38,6 +38,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
+
+
+        v.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Log.i("Click",v.getId()+"");
+
+            }
+        });
         ItemViewHolder vh = new ItemViewHolder( v);
 
         return vh;
@@ -49,7 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
         holder.vName.setText(i.getTitle());
         holder.vLocation.setText(i.getCount()+"");
         holder.vImg.setImageResource(i.getImage());
-
+        holder.itemView.setId(position);
     }
 
 
