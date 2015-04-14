@@ -40,6 +40,10 @@ public class Search {
         return SearchList;
     }
 
+    public ArrayList<Item> getRecentSearch(){
+        return SearchList;
+    }
+
     public static ArrayList<Item> searchListFor(ArrayList<Item> ListOThings,String s){
         ArrayList<Item> searching=new ArrayList<Item>();
         s=s.toLowerCase();
