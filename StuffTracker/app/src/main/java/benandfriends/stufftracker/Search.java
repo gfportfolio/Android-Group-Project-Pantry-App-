@@ -9,19 +9,31 @@ public class Search {
     private ArrayList<Item> ListOfEverything = new ArrayList<Item>();
     private ArrayList<Item> SearchList = new ArrayList<Item>();
 
+    /*
+    Constructor
+    Parameters:
+        ArrayList<Item> itms:   This is the collection of all items we are searching through.
+     */
     public Search(ArrayList<Item> itms){
         ListOfEverything = itms;
 
     }
 
+
     public boolean removeItem(Item itm){
         return ListOfEverything.remove(itm);
     }
+
 
     public boolean addItem(Item itm){
         return ListOfEverything.add(itm);
     }
 
+
+    /*
+    Parameters
+        String s:   the name or partial name of the item we are searching for.
+     */
     public ArrayList<Item> searchFor(String s){
         SearchList.clear();
         s=s.toLowerCase();
