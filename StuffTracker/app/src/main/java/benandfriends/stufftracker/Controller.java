@@ -47,4 +47,12 @@ public class Controller {
     public static ArrayList<Item> getItems() {
         return Items;
     }
+
+    public static int getItemCount(){
+        return Items.size();
+    }
+    public static int getLocationsCount(){
+        return Containers.size();
+    }
+
 }

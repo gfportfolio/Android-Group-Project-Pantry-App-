@@ -6,7 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import benandfriends.stufftracker.R;
+import android.view.MotionEvent;
+import android.view.View;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity {
@@ -36,8 +39,10 @@ public class MainActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new MyAdapter(Controller.getItems());
+        mAdapter = new MyAdapter(makeArrayListOfItems());
         mRecyclerView.setAdapter(mAdapter);
+
+
 
 
         //Example code for attaching FAB to view. Becomes visible when an attached target is
@@ -47,6 +52,32 @@ public class MainActivity extends Activity {
         fab.attachToListView(listView);*/
 
     }
+
+    public interface OnItemClickListener {
+        public void onItemClick(View view , int position);
+    }
+
+
+
+
+
+    private ArrayList<ItemMain> makeArrayListOfItems(){
+        ArrayList<ItemMain> list = new ArrayList<ItemMain>();
+        ItemMain items = new ItemMain();
+        items.Count=Controller.getItemCount();
+        items.Title="Items";
+        items.Image = R.drawable.item;
+
+        ItemMain containers = new ItemMain();
+        containers.Title="Containers";
+        containers.Count=Controller.getLocationsCount();
+        containers.Image=R.drawable.location;
+
+        list.add(items);
+        list.add(containers);
+        return list;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
