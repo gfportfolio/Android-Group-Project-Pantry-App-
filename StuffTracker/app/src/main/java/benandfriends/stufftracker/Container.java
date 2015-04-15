@@ -3,6 +3,8 @@ package benandfriends.stufftracker;
 import android.graphics.Bitmap;
 import android.location.Location;
 
+import java.util.ArrayList;
+
 /**
  * Created by gavinfarnsworth on 3/26/15.
  */
@@ -10,10 +12,36 @@ public class Container {
     private String name;
     private Bitmap image;
     private Location location;
+    private ArrayList<Item> items;
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public void removeItem(Item item){
+        items.remove(item);
+    }
+
+    public int getItemsCount(){
+        return items.size();
+    }
+
+    public Item getItem(int i){
+        return items.get(i);
+    }
 
     public Container(String name) {
+
         this.name = name;
+        this.items = new ArrayList<Item>();
     }
 
     public String getName() {

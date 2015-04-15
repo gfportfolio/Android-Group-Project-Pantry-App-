@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.melnykov.fab.FloatingActionButton;
+
 import java.util.ArrayList;
 
 
@@ -47,14 +49,9 @@ public class MainActivity extends Activity {
 
         //Example code for attaching FAB to view. Becomes visible when an attached target is
         //scrolled up and invisible when scrolled down
-        /*ListView listView = (ListView) findViewById(android.R.id.list);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.attachToListView(listView);*/
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.mainfab);
+        fab.attachToRecyclerView(mRecyclerView);
 
-    }
-
-    public interface OnItemClickListener {
-        public void onItemClick(View view , int position);
     }
 
 
@@ -64,7 +61,7 @@ public class MainActivity extends Activity {
     private ArrayList<ItemMain> makeArrayListOfItems(){
         ArrayList<ItemMain> list = new ArrayList<ItemMain>();
         ItemMain items = new ItemMain();
-        items.Count=Controller.getItemCount();
+        items.Count=Controller.getItemsCount();
         items.Title="Items";
         items.Image = R.drawable.item;
 
