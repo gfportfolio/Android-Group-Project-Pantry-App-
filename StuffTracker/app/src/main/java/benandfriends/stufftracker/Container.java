@@ -69,4 +69,11 @@ public class Container {
         //search this container for an item by name with string s
         return Search.searchListFor(items,s);
     }
+
+    public ArrayList<Item> getDisplayedItems(String searchBarValue){
+        if(searchBarValue==null || searchBarValue.equals("")){
+            return items;
+        }
+        return Search.searchListFor(items,searchBarValue);
+    }
 }
