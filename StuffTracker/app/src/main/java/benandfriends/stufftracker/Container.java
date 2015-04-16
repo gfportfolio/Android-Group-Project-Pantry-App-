@@ -2,6 +2,7 @@ package benandfriends.stufftracker;
 
 import android.graphics.Bitmap;
 import android.location.Location;
+import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -14,21 +15,16 @@ public class Container {
     private Location location;
     private ArrayList<Item> items;
 
+
     public ArrayList<Item> getItems() {
         return items;
     }
+
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    public void addItem(Item item){
-        items.add(item);
-    }
-
-    public void removeItem(Item item){
-        items.remove(item);
-    }
 
     public int getItemsCount(){
         return items.size();
@@ -66,5 +62,30 @@ public class Container {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public boolean addItem(Item item){
+        item.setLocation(this);
+        return items.add(item);
+    }
+
+    public boolean removeItem(Item item){
+        item.setLocation(null);
+        return items.remove(item);
+    }
+
+    public Item getItemById(int id){
+        for(Item itm: items){
+            if(itm.getId()==id){
+                return itm;
+            }
+        }
+        return null;
+    }
+
+
+    public ArrayList<Item> search(String s){
+        //search this container for an item by name with string s
+        return Search.searchListFor(items,s);
     }
 }

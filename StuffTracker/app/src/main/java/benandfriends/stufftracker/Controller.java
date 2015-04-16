@@ -31,8 +31,8 @@ public class Controller {
         Containers.add(a);
         Containers.add(b);
         //String name, int id, String upc, Container location, Boolean opened, Date dateBought
-        Item c= new Item("Oreos", 0, "044000025267", true, new Date(115, 3,1));
-        Item d= new Item("Milk", 1, "062639295950", true, new Date(115, 3,3));
+        Item c= new Item("Oreos", 0, "044000025267",  true, new Date(115, 3,1));
+        Item d= new Item("Milk", 1, "062639295950",  true, new Date(115, 3,3));
         d.setDateExpires(new Date(115, 3, 15));
 
         a.addItem(c);

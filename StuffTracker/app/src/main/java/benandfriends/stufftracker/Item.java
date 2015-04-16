@@ -18,6 +18,7 @@ public class Item {
     private Date dateBought;
     private Date dateExpires;
     private Boolean notifyWhenExpiring;
+    private Container location;
 
     public Item(String name, int id, String upc,  Boolean opened, Date dateBought) {
         this.name = name;
@@ -59,6 +60,9 @@ public class Item {
         this.upc = upc;
     }
 
+    public Container getLocation(){return location;}
+
+    public void setLocation(Container location){this.location=location;}
 
     public Boolean isOpened() {
         return opened;
