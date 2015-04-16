@@ -20,7 +20,7 @@ public class Item {
     private Boolean notifyWhenExpiring;
     private Container location;
 
-    public Item(String name, int id, String upc, Boolean opened, Date dateBought) {
+    public Item(String name, int id, String upc,  Boolean opened, Date dateBought) {
         this.name = name;
         this.id = id;
         this.upc = upc;

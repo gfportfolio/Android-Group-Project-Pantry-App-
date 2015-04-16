@@ -11,11 +11,9 @@ import java.util.Date;
 public class Controller {
 
     private static ArrayList<Container> Containers;
-    private static ArrayList<Item> Items;
 
     public static void load() {
         Containers = new ArrayList<Container>();
-        Items = new ArrayList<Item>();
 
         loadDataFromMemory();
 
@@ -36,21 +34,25 @@ public class Controller {
         Item c= new Item("Oreos", 0, "044000025267",  true, new Date(115, 3,1));
         Item d= new Item("Milk", 1, "062639295950",  true, new Date(115, 3,3));
         d.setDateExpires(new Date(115, 3, 15));
-        Items.add(0, c);
-        Items.add(1,d);
+
+        a.addItem(c);
+        a.addItem(d);
+
     }
 
     public static ArrayList<Container> getContainers() {
         return Containers;
     }
 
-    public static ArrayList<Item> getItems() {
-        return Items;
+    public static int getItemsCount(){
+        int count = 0;
+        for(Container container : Containers){
+            count+=container.getItemsCount();
+        }
+        return count;
     }
 
-    public static int getItemCount(){
-        return Items.size();
-    }
+
     public static int getLocationsCount(){
         return Containers.size();
     }
