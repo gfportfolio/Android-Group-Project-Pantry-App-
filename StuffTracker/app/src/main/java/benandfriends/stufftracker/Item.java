@@ -14,17 +14,16 @@ public class Item {
     private int id;
     private Bitmap image;
     private String upc;
-    private Location location;
     private Boolean opened;
     private Date dateBought;
     private Date dateExpires;
     private Boolean notifyWhenExpiring;
+    private Container location;
 
-    public Item(String name, int id, String upc, Location location, Boolean opened, Date dateBought) {
+    public Item(String name, int id, String upc, Boolean opened, Date dateBought) {
         this.name = name;
         this.id = id;
         this.upc = upc;
-        this.location = location;
         this.opened = opened;
         this.dateBought = dateBought;
     }
@@ -61,13 +60,9 @@ public class Item {
         this.upc = upc;
     }
 
-    public Location getLocation() {
-        return location;
-    }
+    public Container getLocation(){return location;}
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+    public void setLocation(Container location){this.location=location;}
 
     public Boolean isOpened() {
         return opened;

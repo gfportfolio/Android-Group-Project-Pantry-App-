@@ -50,25 +50,25 @@ public class MainActivity extends Activity {
 
 
     private void setUpViews() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.locations_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(this.adapter);
-
-        this.instantiateFab(recyclerView);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.locations_recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setAdapter(this.adapter);
+//
+//        this.instantiateFab(recyclerView);
     }
 
 
     private void instantiateFab(RecyclerView recyclerView) {
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab.attachToRecyclerView(recyclerView);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateContainerActivity.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+//        fab.attachToRecyclerView(recyclerView);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, CreateContainerActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 
