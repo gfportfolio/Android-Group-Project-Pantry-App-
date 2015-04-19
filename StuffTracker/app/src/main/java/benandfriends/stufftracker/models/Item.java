@@ -8,7 +8,6 @@ import java.util.Date;
 public final class Item {
 
     private String name = "";
-    private String upc;
     private Bitmap image;
     private Boolean isOpened;
     private Date datePurchased;
@@ -22,11 +21,6 @@ public final class Item {
 
     public String getName() {
         return name;
-    }
-
-
-    public String getUpc() {
-        return upc;
     }
 
 

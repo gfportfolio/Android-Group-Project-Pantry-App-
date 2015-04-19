@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import benandfriends.stufftracker.R;
 
 
-public final class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.ViewHolder> {
+public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdapter.ViewHolder> {
 
     private ArrayList<String> dataSet;
 
@@ -26,7 +26,7 @@ public final class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapte
     }
 
 
-    public LocationsAdapter(ArrayList<String> dataSet) {
+    public ContainersAdapter(ArrayList<String> dataSet) {
         this.dataSet = dataSet;
     }
 

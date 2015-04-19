@@ -3,11 +3,14 @@ package benandfriends.stufftracker;
 import android.graphics.Bitmap;
 import android.location.Location;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gavinfarnsworth on 3/26/15.
  */
 public class Container {
+
+
     private String name;
     private Bitmap image;
     private Location location;

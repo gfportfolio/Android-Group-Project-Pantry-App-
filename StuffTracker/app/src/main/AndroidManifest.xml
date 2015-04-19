@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.CreateContainerActivity"/>
+        <activity android:name=".activities.ContainerListActivity"/>
     </application>
 
 </manifest>
