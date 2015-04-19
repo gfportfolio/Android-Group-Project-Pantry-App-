@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 
 /**
@@ -17,47 +15,28 @@ import java.util.ArrayList;
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> implements View.OnClickListener{
 
-    private ArrayList<ItemMain> myDataset;
+    private ArrayList<ItemMain> myDataSet;
 
-    
 
-    /*public static class ViewHolder extends  RecyclerView.ViewHolder{
-        public TextView mTextView;
-        public ViewHolder(TextView v){
-            super(v);
-            mTextView = v;
-        }
-    }*/
-
-    public MyAdapter(ArrayList<ItemMain> myDataset){
-
-       this.myDataset = myDataset;
+    public MyAdapter(ArrayList<ItemMain> myDataSet){
+       this.myDataSet = myDataSet;
     }
+
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_view, parent, false);
-
-
-        v.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Log.i("Click",v.getId()+"");
-
-            }
-        });
-        ItemViewHolder vh = new ItemViewHolder( v);
-
-        return vh;
+        v.setOnClickListener(this);
+        return new ItemViewHolder(v);
     }
+
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
-        ItemMain i = myDataset.get(position);
+        ItemMain i = myDataSet.get(position);
         holder.vName.setText(i.getTitle());
-        holder.vLocation.setText(i.getCount()+"");
+        holder.vLocation.setText(i.getCount() + "");
         holder.vImg.setImageResource(i.getImage());
         holder.itemView.setId(position);
     }
@@ -65,12 +44,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
 
     @Override
     public int getItemCount() {
-        return myDataset.size();
+        return myDataSet.size();
     }
+
 
     @Override
     public void onClick(View v) {
-
+        switch(v.getTag().toString()) {
+            case "hi":
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -86,4 +71,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
             vImg = (ImageView) v.findViewById(R.id.imageView);
         }
     }
+
+
 }

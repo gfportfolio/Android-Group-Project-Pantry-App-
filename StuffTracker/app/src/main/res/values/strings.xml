@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">StuffTracker</string>
     <string name="scan_a_product">Scan A Product</string>
+    <string name="items">Items</string>
+    <string name="containers">Containers</string>
 </resources>

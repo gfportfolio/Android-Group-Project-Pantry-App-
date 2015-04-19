@@ -1,11 +1,8 @@
 <FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/D100">
 
-    <!--Can use ListView, RecyclerView, and ScrollView for
-    attaching-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"

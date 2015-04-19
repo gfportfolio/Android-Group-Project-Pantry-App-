@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -37,11 +36,14 @@ public class MainActivity extends Activity {
         mAdapter = new MyAdapter(makeArrayListOfItems());
         mRecyclerView.setAdapter(mAdapter);
 
-        //Example code for attaching FAB to view. Becomes visible when an attached target is
-        //scrolled up and invisible when scrolled down
         /*ListView listView = (ListView) findViewById(android.R.id.list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);*/
+    }
+
+
+    public interface OnItemClickListener {
+        public void onItemClick(View view , int position);
     }
 
 
@@ -85,6 +87,4 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

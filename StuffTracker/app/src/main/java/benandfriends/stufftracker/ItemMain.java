@@ -1,5 +1,4 @@
-
-        package benandfriends.stufftracker;
+package benandfriends.stufftracker;
 
 /**
  * Created by Benjamin on 4/2/2015.
