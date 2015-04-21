@@ -44,8 +44,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ItemViewHolder> im
 
             @Override
             public void onClick(View v) {
-                Log.i("Click",v.getId()+"");
+                int position = v.getId();
+                Log.i("Click",position+"");
+                if(position==0){
 
+                }
+                else if(position ==1){
+
+                }
             }
         });
         ItemViewHolder vh = new ItemViewHolder( v);
