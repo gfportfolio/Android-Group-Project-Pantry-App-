@@ -7,13 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.melnykov.fab.FloatingActionButton;
-
-import benandfriends.stufftracker.R;
-import benandfriends.stufftracker.utilities.ContainersAdapter;
+import benandfriends.stufftracker.utilities.ItemsAdapter;
 
 
-public class ContainerListActivity extends FabListActivity {
+public class ItemListActivity extends FabListActivity {
 
 
     @Override
@@ -24,7 +21,7 @@ public class ContainerListActivity extends FabListActivity {
 
     @Override
     protected RecyclerView.Adapter instantiateRecyclerViewAdapter() {
-        return new ContainersAdapter(this);
+        return new ItemsAdapter(this, this.position);
     }
 
 
@@ -33,7 +30,7 @@ public class ContainerListActivity extends FabListActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContainerListActivity.this, CreateContainerActivity.class);
+                Intent intent = new Intent(ItemListActivity.this, CreateItemActivity.class);
                 startActivityForResult(intent, 1);
             }
         };

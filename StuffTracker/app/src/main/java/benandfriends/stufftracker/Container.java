@@ -14,7 +14,7 @@ public class Container {
     private String name;
     private Bitmap image;
     private Location location;
-    private ArrayList<Item> items;
+    private ArrayList<Item> items = new ArrayList<>();
 
 
     public Container(String name) {

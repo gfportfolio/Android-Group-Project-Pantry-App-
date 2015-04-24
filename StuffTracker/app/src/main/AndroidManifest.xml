@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".activities.CreateContainerActivity"/>
         <activity android:name=".activities.ContainerListActivity"/>
+        <activity android:name=".activities.ItemListActivity"/>
+        <activity android:name=".activities.CreateItemActivity"/>
     </application>
 
 </manifest>

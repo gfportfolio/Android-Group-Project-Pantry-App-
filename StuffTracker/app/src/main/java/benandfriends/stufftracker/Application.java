@@ -41,9 +41,7 @@ public final class Application extends Observable {
 
 
     public List<Container> getContainers() {
-        List<Container> copy = new ArrayList<>();
-        Collections.copy(copy, mContainers);
-        return copy;
+        return mContainers;
     }
 
 

@@ -89,9 +89,12 @@ public class CreateContainerActivity extends Activity {
             public void onClick(View v) {
                 doneButton.setEnabled(false);
                 Container container = new Container(titleBox.getText().toString());
-                Bitmap selectedImage = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                if (null != selectedImage) {
-                    container.setImage(selectedImage);
+                BitmapDrawable drawable = (BitmapDrawable)imageView.getDrawable();
+                if (null != drawable) {
+                    Bitmap selectedImage = drawable.getBitmap();
+                    if (null != selectedImage) {
+                        container.setImage(selectedImage);
+                    }
                 }
                 Application.getApplicationInstance().addNewContainer(container);
                 CreateContainerActivity.this.finish();
