@@ -256,6 +256,12 @@ public class CreateItemActivity extends FragmentActivity {
             notifyOfExpirationCheckBox.setChecked(currentItem.getNotifyWhenExpiring());
             itemHasBeenOpenedCheckBox.setChecked(currentItem.getIsOpened());
             imageView.setImageBitmap(currentItem.getImage());
+            if (null != currentItem.getDateExpires()) {
+                expiresOnDateTextView.setText(Application.APP_DATE_FORMAT.format(currentItem.getDateExpires()));
+            }
+            if (null != currentItem.getDatePurchased()) {
+                purchasedOnDateTextView.setText(Application.APP_DATE_FORMAT.format(currentItem.getDatePurchased()));
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package benandfriends.stufftracker.utilities.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -83,7 +84,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.putExtra(FabListActivity.POSITION_KEY, itemPosition);
                 i.putExtra(CONTAINER_PARENT_ID_KEY, parentContainerId);
-                context.startActivity(i);
+                ((Activity)context).startActivityForResult(i, 1);
             }
         });
     }
@@ -112,7 +113,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         Date purchasedOn = item.getDatePurchased();
         final String purchaseString = context.getString(R.string.purchased_on);
         if (null != purchasedOn) {
-            final String purchasedOnDate = purchaseString + " " + DateFormat.format("MMMM F, yyyy", purchasedOn);
+            final String purchasedOnDate = purchaseString + " " + Application.APP_DATE_FORMAT.format(purchasedOn);
             holder.purchaseDateTextView.setText(purchasedOnDate);
         } else {
             holder.purchaseDateTextView.setText(purchaseString + " ?");
