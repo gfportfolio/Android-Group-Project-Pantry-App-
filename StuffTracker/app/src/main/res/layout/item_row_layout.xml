@@ -21,7 +21,6 @@
         android:layout_toEndOf="@id/icon"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:text="Item Title"
         android:textSize="18sp"
         android:layout_marginStart="10dp"
         android:paddingTop="5dp"/>
@@ -35,10 +34,8 @@
         android:layout_alignParentEnd="true"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:text="Purchased on July 15th, 2068"
         android:textSize="14sp"
-        android:layout_marginStart="10dp"
-        android:paddingBottom="5dp"/>
+        android:layout_marginStart="10dp"/>
 
     <TextView
         android:id="@+id/expiration_date"
@@ -49,7 +46,6 @@
         android:layout_alignParentEnd="true"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:text="Expires on July 15th, 2068"
         android:textSize="14sp"
         android:layout_marginStart="10dp"
         android:paddingBottom="5dp"/>

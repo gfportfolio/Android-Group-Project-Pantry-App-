@@ -9,6 +9,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -91,6 +93,7 @@ public class CreateItemActivity extends FragmentActivity {
 
     private void setUpViews() {
         instantiateViews();
+        setupTitleEditText();
         setUpContainerSpinner();
         setUpImagePickerButton();
         setUpPickPurchasedOnDateButton();
@@ -113,6 +116,25 @@ public class CreateItemActivity extends FragmentActivity {
         notifyOfExpirationCheckBox = (CheckBox)findViewById(R.id.notify_of_expiration_checkbox);
         itemHasBeenOpenedCheckBox = (CheckBox)findViewById(R.id.item_has_been_opened_checkbox);
         imageView = (ImageView) findViewById(R.id.imageView);
+    }
+
+
+    private void setupTitleEditText() {
+        titleBox = (EditText)findViewById(R.id.title_box);
+        titleBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().replaceAll("\\s+","").isEmpty()) {
+                    doneButton.setEnabled(true);
+                    return;
+                }
+                doneButton.setEnabled(false);
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
 
@@ -175,6 +197,13 @@ public class CreateItemActivity extends FragmentActivity {
             public void onClick(View v) {
                 doneButton.setEnabled(false);
                 Item item = getItemFromChoices();
+                Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
+                if (currentItemId > -1) {
+                    parent.getItems().set(currentItemId, item);
+                } else {
+                    parent.addItem(item);
+                }
+                CreateItemActivity.this.finish();
             }
         });
     }
@@ -212,7 +241,7 @@ public class CreateItemActivity extends FragmentActivity {
     private void setItemPurchaseDate(Item item) {
         try {
             Date purchased = Application.APP_DATE_FORMAT.parse(purchasedOnDateTextView.getText().toString());
-            item.setDateExpires(purchased);
+            item.setDatePurchased(purchased);
         } catch (ParseException e) {
             Log.e("DateFormat", e.getMessage());
         }
