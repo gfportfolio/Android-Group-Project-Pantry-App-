@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,16 +14,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+import benandfriends.stufftracker.Application;
+import benandfriends.stufftracker.Container;
 import benandfriends.stufftracker.R;
 
 public class CreateContainerActivity extends Activity {
 
     private final int SELECT_PHOTO = 1;
 
+    private EditText titleBox;
     private ImageView imageView;
     private Button doneButton;
 
@@ -34,7 +39,6 @@ public class CreateContainerActivity extends Activity {
         imageView = (ImageView)findViewById(R.id.imageView);
 
         this.setUpViews();
-
     }
 
 
@@ -48,7 +52,7 @@ public class CreateContainerActivity extends Activity {
             try {
                 final Uri imageUri = imageReturnedIntent.getData();
                 final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-                final Bitmap selectedImage = resizeBitmap(BitmapFactory.decodeStream(imageStream), 500);
+                final Bitmap selectedImage = resizeBitmap(BitmapFactory.decodeStream(imageStream), 800);
                 imageView.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -83,14 +87,21 @@ public class CreateContainerActivity extends Activity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                doneButton.setEnabled(false);
+                Container container = new Container(titleBox.getText().toString());
+                Bitmap selectedImage = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                if (null != selectedImage) {
+                    container.setImage(selectedImage);
+                }
+                Application.getApplicationInstance().addNewContainer(container);
+                CreateContainerActivity.this.finish();
             }
         });
     }
 
 
     private void setUpTitleEditText() {
-        EditText titleBox = (EditText)findViewById(R.id.title_box);
+        titleBox = (EditText)findViewById(R.id.title_box);
         titleBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

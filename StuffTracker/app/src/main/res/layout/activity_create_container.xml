@@ -18,14 +18,14 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Add a New Location"
+                android:text="Add a New Container"
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:paddingBottom="10dp"/>
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="When you're done, you'll be able to add items to your new location category."
+                android:text="When you're done, you'll be able to add items to your new container category."
                 android:textSize="14sp"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
