@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@color/D500"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Add a New Item"
+                android:textSize="20sp"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/white"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Keep a record of your item's position, purchase date, expiration date, and more."
+                android:textSize="14sp"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/D700"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
+            <EditText
+                android:id="@+id/title_box"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="Enter a title..."/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:background="@color/D100">
+                <TextView
+                    android:id="@+id/purchased_on_date_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:text="Purchased on: ?"
+                    android:textSize="16sp" android:paddingTop="12dp"/>
+                <Button
+                    android:id="@+id/purchased_on_date_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Date"
+                    android:layout_gravity="end"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal"
+                android:background="@color/D100">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:text="Expires on: ?"
+                    android:textSize="16sp" android:paddingTop="12dp"/>
+                <Button
+                    android:id="@+id/expired_on_date_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pick Date"
+                    android:layout_gravity="end"/>
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/notify_of_expiration_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notify me when this item expires."
+                android:textColor="@color/material_blue_grey_800" android:layout_marginTop="15dp" />
+
+            <CheckBox
+                android:id="@+id/item_has_been_opened_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This item has been opened."
+                android:textColor="@color/material_blue_grey_800" android:layout_marginTop="15dp"/>
+            
+            <Button
+                android:id="@+id/pick_image_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Image (Optional)"
+                android:layout_gravity="end"
+                android:width="170dp"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp"
+                android:layout_gravity="center_vertical"
+                android:padding="20dp"
+                android:layout_marginTop="25dp"
+                android:scaleType="centerInside"
+                android:background="@color/primary_dark_material_light"/>
+
+            <Button
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Done!"
+                android:layout_gravity="end"
+                android:enabled="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

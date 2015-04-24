@@ -18,11 +18,14 @@ import benandfriends.stufftracker.Container;
 import benandfriends.stufftracker.Item;
 import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.activities.CreateItemActivity;
+import benandfriends.stufftracker.activities.FabListActivity;
 import benandfriends.stufftracker.activities.ItemListActivity;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
+
+    public static final String CONTAINER_PARENT_ID_KEY = "ParentContainerId";
 
     private Context context;
     private int parentContainerId;
@@ -79,7 +82,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent i = new Intent(context, CreateItemActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                i.putExtra(ItemListActivity.POSITION_KEY, itemPosition);
+                i.putExtra(FabListActivity.POSITION_KEY, itemPosition);
+                i.putExtra(CONTAINER_PARENT_ID_KEY, parentContainerId);
                 context.startActivity(i);
             }
         });
