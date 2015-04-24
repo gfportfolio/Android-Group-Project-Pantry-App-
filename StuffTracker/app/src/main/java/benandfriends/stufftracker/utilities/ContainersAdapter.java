@@ -28,12 +28,12 @@ public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdap
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtFooter;
+        public TextView titleTextView;
         public ImageView imageView;
 
         public ViewHolder(View v) {
             super(v);
-            txtFooter = (TextView) v.findViewById(R.id.title);
+            titleTextView = (TextView) v.findViewById(R.id.title);
             imageView = (ImageView) v.findViewById(R.id.icon);
         }
     }
@@ -52,7 +52,7 @@ public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdap
         final Container c = Application.getApplicationInstance().getContainers().get(position);
         final String name = c.getName();
         final Bitmap image = c.getImage();
-        holder.txtFooter.setText(name);
+        holder.titleTextView.setText(name);
         if (null != image) {
             holder.imageView.setImageBitmap(image);
         }

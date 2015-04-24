@@ -3,4 +3,6 @@
     <string name="scan_a_product">Scan A Product</string>
     <string name="items">Items</string>
     <string name="containers">Containers</string>
+    <string name="expires_on">Expires on</string>
+    <string name="purchased_on">Purchased on</string>
 </resources>

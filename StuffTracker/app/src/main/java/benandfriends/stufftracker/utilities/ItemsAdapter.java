@@ -1,14 +1,27 @@
 package benandfriends.stufftracker.utilities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Date;
 
 import benandfriends.stufftracker.Application;
 import benandfriends.stufftracker.Container;
+import benandfriends.stufftracker.Item;
+import benandfriends.stufftracker.R;
+import benandfriends.stufftracker.activities.CreateItemActivity;
+import benandfriends.stufftracker.activities.ItemListActivity;
 
 
-public class ItemsAdapter extends RecyclerView.Adapter<ContainersAdapter.ViewHolder> {
+public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
 
 
     private Context context;
@@ -21,15 +34,55 @@ public class ItemsAdapter extends RecyclerView.Adapter<ContainersAdapter.ViewHol
     }
 
 
-    @Override
-    public ContainersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView titleTextView;
+        public TextView purchaseDateTextView;
+        public TextView expirationDateTextView;
+        public ImageView imageView;
+
+        public ViewHolder(View v) {
+            super(v);
+            titleTextView = (TextView) v.findViewById(R.id.title);
+            purchaseDateTextView = (TextView) v.findViewById(R.id.purchased_on_date);
+            expirationDateTextView = (TextView) v.findViewById(R.id.expiration_date);
+            imageView = (ImageView) v.findViewById(R.id.icon);
+        }
     }
 
 
     @Override
-    public void onBindViewHolder(ContainersAdapter.ViewHolder holder, int position) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_layout, parent, false);
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
 
+
+    @Override
+    public void onBindViewHolder(ItemsAdapter.ViewHolder holder, int position) {
+        Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
+        final Item item = parent.getItemById(position);
+        final String name = item.getName();
+        final Bitmap image = item.getImage();
+
+        setExpirationText(item, holder);
+        setPurchasedText(item, holder);
+
+        holder.titleTextView.setText(name);
+        if (null != image) {
+            holder.imageView.setImageBitmap(image);
+        }
+
+        final int itemPosition = position;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, CreateItemActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.putExtra(ItemListActivity.POSITION_KEY, itemPosition);
+                context.startActivity(i);
+            }
+        });
     }
 
 
@@ -37,6 +90,30 @@ public class ItemsAdapter extends RecyclerView.Adapter<ContainersAdapter.ViewHol
     public int getItemCount() {
         Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
         return parent.getItems().size();
+    }
+
+
+    private void setExpirationText(Item item, ViewHolder holder) {
+        Date expiration = item.getDateExpires();
+        final String expireString = context.getString(R.string.expires_on);
+        if (null != expiration) {
+            final String expirationDate = expireString + " " + DateFormat.format("MMMM F, yyyy", expiration);
+            holder.expirationDateTextView.setText(expirationDate);
+        } else {
+            holder.expirationDateTextView.setText(expireString + " ?");
+        }
+    }
+
+
+    private void setPurchasedText(Item item, ViewHolder holder) {
+        Date purchasedOn = item.getDateBought();
+        final String purchaseString = context.getString(R.string.purchased_on);
+        if (null != purchasedOn) {
+            final String purchasedOnDate = purchaseString + " " + DateFormat.format("MMMM F, yyyy", purchasedOn);
+            holder.purchaseDateTextView.setText(purchasedOnDate);
+        } else {
+            holder.purchaseDateTextView.setText(purchaseString + " ?");
+        }
     }
 
 
