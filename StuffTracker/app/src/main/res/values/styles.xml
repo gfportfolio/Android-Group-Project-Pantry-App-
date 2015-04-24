@@ -11,6 +11,7 @@
 
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerTextViewStyle</item>
     </style>
 
     <style name="ButtonStyle" parent="android:Widget.Material.Button">
@@ -21,5 +22,10 @@
         <item name="android:textColorPrimary">@color/primary_dark_material_light</item>
         <item name="android:textColor">@color/primary_dark_material_light</item>
         <item name="android:colorAccent">@color/D300</item>
+    </style>
+    <style name="SpinnerTextViewStyle" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/primary_dark_material_light</item>
+        <item name="android:textColorPrimary">@color/primary_dark_material_light</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

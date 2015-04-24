@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
@@ -19,8 +20,10 @@ import android.widget.Spinner;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import benandfriends.stufftracker.Application;
 import benandfriends.stufftracker.R;
@@ -37,14 +40,10 @@ public class CreateItemActivity extends Activity {
     private int currentItemId = -1;
 
     private EditText titleBox;
-
     private Spinner containerSpinner;
-
     private Button doneButton;
-
     private CheckBox notifyOfExpirationCheckBox;
     private CheckBox itemHasBeenOpenedCheckBox;
-
     private ImageView imageView;
 
 
@@ -97,22 +96,27 @@ public class CreateItemActivity extends Activity {
     }
 
 
-    private void setUpContainerSpinner() {
-
+    private void instantiateViews() {
+        titleBox = (EditText) findViewById(R.id.title_box);
+        containerSpinner = (Spinner) findViewById(R.id.container_selection_spinner);
+        doneButton = (Button)findViewById(R.id.done_button);
+        notifyOfExpirationCheckBox = (CheckBox)findViewById(R.id.notify_of_expiration_checkbox);
+        itemHasBeenOpenedCheckBox = (CheckBox)findViewById(R.id.item_has_been_opened_checkbox);
+        imageView = (ImageView) findViewById(R.id.imageView);
     }
 
 
-    private void instantiateViews() {
-        titleBox = (EditText) findViewById(R.id.title_box);
-
+    private void setUpContainerSpinner() {
         containerSpinner = (Spinner) findViewById(R.id.container_selection_spinner);
-
-        doneButton = (Button)findViewById(R.id.done_button);
-
-        notifyOfExpirationCheckBox = (CheckBox)findViewById(R.id.notify_of_expiration_checkbox);
-        itemHasBeenOpenedCheckBox = (CheckBox)findViewById(R.id.item_has_been_opened_checkbox);
-
-        imageView = (ImageView) findViewById(R.id.imageView);
+        List<Container> containers = Application.getApplicationInstance().getContainers();
+        List<String> containerNames = new ArrayList<>();
+        for (Container c : containers) {
+            containerNames.add(c.getName());
+        }
+        ArrayAdapter<String> spinAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, containerNames);
+        spinAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        containerSpinner.setAdapter(spinAdapter);
+        containerSpinner.setSelection(parentContainerId);
     }
 
 
