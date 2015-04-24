@@ -10,6 +10,7 @@ public final class Item {
     private String name = "";
     private Bitmap image;
     private Boolean isOpened;
+    private Boolean notifyWhenExpiring;
     private Date datePurchased;
     private Date dateExpires;
 
@@ -71,6 +72,15 @@ public final class Item {
         this.dateExpires = dateExpires;
     }
 
+
+    public Boolean getNotifyWhenExpiring() {
+        return notifyWhenExpiring;
+    }
+
+
+    public void setNotifyWhenExpiring(Boolean notifyWhenExpiring) {
+        this.notifyWhenExpiring = notifyWhenExpiring;
+    }
 
 
 }

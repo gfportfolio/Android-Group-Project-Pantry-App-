@@ -76,7 +76,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ItemViewHolder
                     context.startActivity(intent);
                 }
                 if (name.equals(context.getString(R.string.items))) {
-
+                    // Do nothing for now.
                 }
             }
         }

@@ -14,14 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import benandfriends.stufftracker.Application;
-import benandfriends.stufftracker.Container;
 import benandfriends.stufftracker.R;
+import benandfriends.stufftracker.models.Container;
 
 public class CreateContainerActivity extends Activity {
 

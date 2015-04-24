@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import benandfriends.stufftracker.Application;
-import benandfriends.stufftracker.Container;
 import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.activities.ItemListActivity;
+import benandfriends.stufftracker.models.Container;
 
 
 public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdapter.ViewHolder> {

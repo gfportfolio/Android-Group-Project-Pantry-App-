@@ -14,12 +14,11 @@ import android.widget.TextView;
 import java.util.Date;
 
 import benandfriends.stufftracker.Application;
-import benandfriends.stufftracker.Container;
-import benandfriends.stufftracker.Item;
 import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.activities.CreateItemActivity;
 import benandfriends.stufftracker.activities.FabListActivity;
-import benandfriends.stufftracker.activities.ItemListActivity;
+import benandfriends.stufftracker.models.Container;
+import benandfriends.stufftracker.models.Item;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
@@ -64,7 +63,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ItemsAdapter.ViewHolder holder, int position) {
         Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
-        final Item item = parent.getItemById(position);
+        final Item item = parent.getItems().get(position);
         final String name = item.getName();
         final Bitmap image = item.getImage();
 
@@ -110,7 +109,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
 
     private void setPurchasedText(Item item, ViewHolder holder) {
-        Date purchasedOn = item.getDateBought();
+        Date purchasedOn = item.getDatePurchased();
         final String purchaseString = context.getString(R.string.purchased_on);
         if (null != purchasedOn) {
             final String purchasedOnDate = purchaseString + " " + DateFormat.format("MMMM F, yyyy", purchasedOn);

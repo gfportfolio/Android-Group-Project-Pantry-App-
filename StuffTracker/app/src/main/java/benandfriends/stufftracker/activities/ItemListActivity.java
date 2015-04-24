@@ -13,9 +13,17 @@ import benandfriends.stufftracker.utilities.ItemsAdapter;
 public class ItemListActivity extends FabListActivity {
 
 
+    private int parentContainerId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent i = getIntent();
+        if (null != i) {
+            parentContainerId = i.getIntExtra(POSITION_KEY, -1);
+        }
     }
 
 
@@ -31,6 +39,7 @@ public class ItemListActivity extends FabListActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ItemListActivity.this, CreateItemActivity.class);
+                intent.putExtra(ItemsAdapter.CONTAINER_PARENT_ID_KEY, parentContainerId);
                 startActivityForResult(intent, 1);
             }
         };

@@ -16,8 +16,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Controller.load();
-
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         mRecyclerView.setHasFixedSize(true);
@@ -34,13 +32,13 @@ public class MainActivity extends Activity {
     private ArrayList<ItemMain> makeArrayListOfItems(){
         ArrayList<ItemMain> list = new ArrayList<>();
         ItemMain items = new ItemMain();
-        items.Count=Controller.getItemCount();
+        items.Count=Application.getApplicationInstance().getAllItems().size();
         items.Title=getString(R.string.items);
         items.Image = R.drawable.item;
 
         ItemMain containers = new ItemMain();
         containers.Title=getString(R.string.containers);
-        containers.Count=Controller.getLocationsCount();
+        containers.Count=Application.getApplicationInstance().getContainers().size();
         containers.Image=R.drawable.location;
 
         list.add(items);

@@ -42,6 +42,11 @@ public final class Container {
     }
 
 
+    public List<Item> getItems() {
+        return this.items;
+    }
+
+
     public void addItem(Item item) {
         items.add(item);
     }
@@ -51,11 +56,5 @@ public final class Container {
         items.remove(item);
     }
 
-
-    public List<Item> getItemList() {
-        List<Item> copy = new ArrayList<>();
-        Collections.copy(copy, items);
-        return copy;
-    }
 
 }
