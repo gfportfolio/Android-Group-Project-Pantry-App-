@@ -1,4 +1,4 @@
-package benandfriends.stufftracker.utilities;
+package benandfriends.stufftracker.utilities.adapters;
 
 import android.content.Context;
 import android.content.Intent;

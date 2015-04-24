@@ -1,4 +1,4 @@
-package benandfriends.stufftracker;
+package benandfriends.stufftracker.utilities;
 
 import java.util.ArrayList;
 

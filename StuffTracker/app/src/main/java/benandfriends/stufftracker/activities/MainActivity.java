@@ -1,4 +1,4 @@
-package benandfriends.stufftracker;
+package benandfriends.stufftracker.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import benandfriends.stufftracker.Application;
+import benandfriends.stufftracker.utilities.ItemMain;
+import benandfriends.stufftracker.R;
+import benandfriends.stufftracker.utilities.adapters.MainAdapter;
 
 
 public class MainActivity extends Activity {
@@ -32,7 +37,7 @@ public class MainActivity extends Activity {
     private ArrayList<ItemMain> makeArrayListOfItems(){
         ArrayList<ItemMain> list = new ArrayList<>();
         ItemMain items = new ItemMain();
-        items.Count=Application.getApplicationInstance().getAllItems().size();
+        items.Count= Application.getApplicationInstance().getAllItems().size();
         items.Title=getString(R.string.items);
         items.Image = R.drawable.item;
 

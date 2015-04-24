@@ -1,7 +1,9 @@
 package benandfriends.stufftracker;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Observable;
 
 import benandfriends.stufftracker.models.Container;
@@ -10,7 +12,10 @@ import benandfriends.stufftracker.models.Item;
 public final class Application extends Observable {
 
 
+    public static final SimpleDateFormat APP_DATE_FORMAT = new SimpleDateFormat("MMMM d, yyyy", Locale.US);
+
     private static Application applicationInstance = new Application();
+
     private List<Container> mContainers = new ArrayList<>();
 
 

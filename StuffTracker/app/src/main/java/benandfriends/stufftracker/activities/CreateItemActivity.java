@@ -1,14 +1,15 @@
 package benandfriends.stufftracker.activities;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,9 +18,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,10 +33,10 @@ import benandfriends.stufftracker.Application;
 import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.models.Container;
 import benandfriends.stufftracker.models.Item;
-import benandfriends.stufftracker.utilities.ItemsAdapter;
+import benandfriends.stufftracker.utilities.adapters.ItemsAdapter;
 
 
-public class CreateItemActivity extends Activity {
+public class CreateItemActivity extends FragmentActivity {
 
     private final int SELECT_PHOTO = 1;
 
@@ -42,6 +46,8 @@ public class CreateItemActivity extends Activity {
     private EditText titleBox;
     private Spinner containerSpinner;
     private Button doneButton;
+    private TextView purchasedOnDateTextView;
+    private TextView expiresOnDateTextView;
     private CheckBox notifyOfExpirationCheckBox;
     private CheckBox itemHasBeenOpenedCheckBox;
     private ImageView imageView;
@@ -100,6 +106,10 @@ public class CreateItemActivity extends Activity {
         titleBox = (EditText) findViewById(R.id.title_box);
         containerSpinner = (Spinner) findViewById(R.id.container_selection_spinner);
         doneButton = (Button)findViewById(R.id.done_button);
+
+        purchasedOnDateTextView = (TextView)findViewById(R.id.purchased_on_date_text_view);
+        expiresOnDateTextView = (TextView)findViewById(R.id.expires_on_date_text_view);
+
         notifyOfExpirationCheckBox = (CheckBox)findViewById(R.id.notify_of_expiration_checkbox);
         itemHasBeenOpenedCheckBox = (CheckBox)findViewById(R.id.item_has_been_opened_checkbox);
         imageView = (ImageView) findViewById(R.id.imageView);
@@ -138,7 +148,8 @@ public class CreateItemActivity extends Activity {
         purchasedOnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Open date picker
+                DialogFragment purchasedOnDateFragment = new DatePickerFragment(purchasedOnDateTextView);
+                purchasedOnDateFragment.show(getSupportFragmentManager(), "purchasedOnDate");
             }
         });
     }
@@ -149,7 +160,8 @@ public class CreateItemActivity extends Activity {
         expiresOnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Open date picker
+                DialogFragment expiresOnDateFragment = new DatePickerFragment(expiresOnDateTextView);
+                expiresOnDateFragment.show(getSupportFragmentManager(), "expiresOnDate");
             }
         });
     }
@@ -162,9 +174,48 @@ public class CreateItemActivity extends Activity {
             @Override
             public void onClick(View v) {
                 doneButton.setEnabled(false);
-                // TODO: Create and add new Item to its parent collection. Finish activity.
+                Item item = getItemFromChoices();
             }
         });
+    }
+
+
+    private Item getItemFromChoices() {
+        Item item = new Item(titleBox.getText().toString());
+        BitmapDrawable drawable = (BitmapDrawable)imageView.getDrawable();
+        if (null != drawable) {
+            Bitmap selectedImage = drawable.getBitmap();
+            if (null != selectedImage) {
+                item.setImage(selectedImage);
+            }
+        }
+
+        item.setIsOpened(itemHasBeenOpenedCheckBox.isChecked());
+        item.setNotifyWhenExpiring(notifyOfExpirationCheckBox.isChecked());
+        this.setItemExpirationDate(item);
+        this.setItemPurchaseDate(item);
+
+        return item;
+    }
+
+
+    private void setItemExpirationDate(Item item) {
+        try {
+            Date expiration = Application.APP_DATE_FORMAT.parse(expiresOnDateTextView.getText().toString());
+            item.setDateExpires(expiration);
+        } catch (ParseException e) {
+            Log.e("DateFormat", e.getMessage());
+        }
+    }
+
+
+    private void setItemPurchaseDate(Item item) {
+        try {
+            Date purchased = Application.APP_DATE_FORMAT.parse(purchasedOnDateTextView.getText().toString());
+            item.setDateExpires(purchased);
+        } catch (ParseException e) {
+            Log.e("DateFormat", e.getMessage());
+        }
     }
 
 
@@ -197,11 +248,12 @@ public class CreateItemActivity extends Activity {
 
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        private TextView dateTextView;
 
-        private Date toSet;
+        public DatePickerFragment() {}
 
-        public DatePickerFragment(Date toSet) {
-            this.toSet = toSet;
+        public DatePickerFragment(TextView dateTextView) {
+            this.dateTextView = dateTextView;
         }
 
         @Override
@@ -215,7 +267,12 @@ public class CreateItemActivity extends Activity {
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
-
+            if (null != dateTextView) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+                Date chosen = calendar.getTime();
+                dateTextView.setText(Application.APP_DATE_FORMAT.format(chosen));
+            }
         }
     }
 }

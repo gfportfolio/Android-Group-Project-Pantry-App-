@@ -1,4 +1,4 @@
-package benandfriends.stufftracker.utilities;
+package benandfriends.stufftracker.utilities.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -100,7 +100,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         Date expiration = item.getDateExpires();
         final String expireString = context.getString(R.string.expires_on);
         if (null != expiration) {
-            final String expirationDate = expireString + " " + DateFormat.format("MMMM F, yyyy", expiration);
+            final String expirationDate = expireString + " " + Application.APP_DATE_FORMAT.format(expiration);
             holder.expirationDateTextView.setText(expirationDate);
         } else {
             holder.expirationDateTextView.setText(expireString + " ?");

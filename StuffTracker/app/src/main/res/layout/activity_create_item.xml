@@ -64,13 +64,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_weight="1"
-                    android:text="Purchased on: ?"
                     android:textSize="16sp" android:paddingTop="12dp"/>
                 <Button
                     android:id="@+id/purchased_on_date_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
+                    android:minWidth="130dp"
+                    android:text="Purchase Date"
                     android:layout_gravity="end"/>
             </LinearLayout>
 
@@ -82,17 +82,18 @@
                 android:orientation="horizontal"
                 android:background="@color/D100">
                 <TextView
+                    android:id="@+id/expires_on_date_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_weight="1"
-                    android:text="Expires on: ?"
                     android:textSize="16sp" android:paddingTop="12dp"/>
                 <Button
                     android:id="@+id/expired_on_date_button"
                     android:layout_width="wrap_content"
+                    android:minWidth="130dp"
                     android:layout_height="wrap_content"
-                    android:text="Pick Date"
+                    android:text="Expiration Date"
                     android:layout_gravity="end"/>
             </LinearLayout>
 

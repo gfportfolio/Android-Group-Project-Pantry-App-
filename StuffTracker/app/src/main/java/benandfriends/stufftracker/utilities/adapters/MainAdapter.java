@@ -1,4 +1,4 @@
-package benandfriends.stufftracker;
+package benandfriends.stufftracker.utilities.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.activities.ContainerListActivity;
+import benandfriends.stufftracker.utilities.ItemMain;
 
 /**
  * Created by gavinfarnsworth on 3/31/15.
