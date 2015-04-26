@@ -95,7 +95,7 @@ public class CreateContainerActivity extends Activity {
                         container.setImage(selectedImage);
                     }
                 }
-                Application.getApplicationInstance().addNewContainer(container);
+                Application.getApplicationInstance(CreateContainerActivity.this).addNewContainer(container);
                 CreateContainerActivity.this.finish();
             }
         });

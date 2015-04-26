@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -63,7 +64,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ItemsAdapter.ViewHolder holder, int position) {
-        Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
+        Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
         final Item item = parent.getItems().get(position);
         final String name = item.getName();
         final Bitmap image = item.getImage();
@@ -92,7 +93,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
+        Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
         return parent.getItems().size();
     }
 

@@ -3,10 +3,12 @@ package benandfriends.stufftracker.models;
 import android.graphics.Bitmap;
 
 import java.util.Date;
+import java.util.UUID;
 
 
 public final class Item {
 
+    private final UUID id;
     private String name = "";
     private Bitmap image;
     private Boolean isOpened;
@@ -16,7 +18,14 @@ public final class Item {
 
 
     public Item(String name) {
+        this.id = UUID.randomUUID();
         this.setName(name);
+    }
+
+
+    public Item(String name, UUID id) {
+        this.id = id;
+        this.name = name;
     }
 
 
@@ -80,6 +89,11 @@ public final class Item {
 
     public void setNotifyWhenExpiring(Boolean notifyWhenExpiring) {
         this.notifyWhenExpiring = notifyWhenExpiring;
+    }
+
+
+    public UUID getId() {
+        return this.id;
     }
 
 

@@ -49,7 +49,7 @@ public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Container c = Application.getApplicationInstance().getContainers().get(position);
+        final Container c = Application.getApplicationInstance(context).getContainers().get(position);
         final String name = c.getName();
         final Bitmap image = c.getImage();
         holder.titleTextView.setText(name);
@@ -72,7 +72,7 @@ public final class ContainersAdapter extends RecyclerView.Adapter<ContainersAdap
 
     @Override
     public int getItemCount() {
-        return Application.getApplicationInstance().getContainers().size();
+        return Application.getApplicationInstance(context).getContainers().size();
     }
 
 

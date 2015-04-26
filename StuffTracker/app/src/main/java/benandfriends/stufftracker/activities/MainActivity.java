@@ -37,13 +37,13 @@ public class MainActivity extends Activity {
     private ArrayList<ItemMain> makeArrayListOfItems(){
         ArrayList<ItemMain> list = new ArrayList<>();
         ItemMain items = new ItemMain();
-        items.Count= Application.getApplicationInstance().getAllItems().size();
+        items.Count= Application.getApplicationInstance(this).getAllItems().size();
         items.Title=getString(R.string.items);
         items.Image = R.drawable.item;
 
         ItemMain containers = new ItemMain();
         containers.Title=getString(R.string.containers);
-        containers.Count=Application.getApplicationInstance().getContainers().size();
+        containers.Count=Application.getApplicationInstance(this).getContainers().size();
         containers.Image=R.drawable.location;
 
         list.add(items);

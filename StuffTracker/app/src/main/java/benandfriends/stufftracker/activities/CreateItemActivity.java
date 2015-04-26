@@ -140,7 +140,7 @@ public class CreateItemActivity extends FragmentActivity {
 
     private void setUpContainerSpinner() {
         containerSpinner = (Spinner) findViewById(R.id.container_selection_spinner);
-        List<Container> containers = Application.getApplicationInstance().getContainers();
+        List<Container> containers = Application.getApplicationInstance(this).getContainers();
         List<String> containerNames = new ArrayList<>();
         for (Container c : containers) {
             containerNames.add(c.getName());
@@ -197,7 +197,7 @@ public class CreateItemActivity extends FragmentActivity {
             public void onClick(View v) {
                 doneButton.setEnabled(false);
                 Item item = getItemFromChoices();
-                Container parent = Application.getApplicationInstance().getContainers().get(parentContainerId);
+                Container parent = Application.getApplicationInstance(CreateItemActivity.this).getContainers().get(parentContainerId);
                 if (currentItemId > -1) {
                     parent.getItems().set(currentItemId, item);
                 } else {
@@ -249,7 +249,7 @@ public class CreateItemActivity extends FragmentActivity {
 
 
     private void populateFieldsWithItemData() {
-        Container parentContainer = Application.getApplicationInstance().getContainers().get(parentContainerId);
+        Container parentContainer = Application.getApplicationInstance(this).getContainers().get(parentContainerId);
         Item currentItem = parentContainer.getItems().get(currentItemId);
         if (null != currentItem) {
             titleBox.setText(currentItem.getName());

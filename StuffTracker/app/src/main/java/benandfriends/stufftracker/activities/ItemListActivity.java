@@ -26,6 +26,13 @@ public class ItemListActivity extends FabListActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        this.adapter.notifyDataSetChanged();
+    }
+
+
+    @Override
     protected RecyclerView.Adapter instantiateRecyclerViewAdapter() {
         return new ItemsAdapter(this, this.position);
     }
