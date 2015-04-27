@@ -18,6 +18,7 @@ public abstract class FabListActivity extends Activity {
 
     protected RecyclerView.Adapter adapter;
     protected int position;
+    protected FloatingActionButton fab;
 
 
     @Override
@@ -59,7 +60,7 @@ public abstract class FabListActivity extends Activity {
 
 
     private void instantiateFab(RecyclerView recyclerView) {
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.attachToRecyclerView(recyclerView);
         fab.setOnClickListener(getFabClickListener());
     }

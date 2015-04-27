@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.utilities.adapters.ItemsAdapter;
 
 
@@ -17,7 +18,7 @@ public class ItemListActivity extends FabListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        super.fab.setImageResource(R.drawable.itemadd);
         Intent i = getIntent();
         if (null != i) {
             parentContainerId = i.getIntExtra(POSITION_KEY, -1);
