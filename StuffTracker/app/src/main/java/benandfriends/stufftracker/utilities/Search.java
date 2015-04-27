@@ -1,6 +1,8 @@
-package benandfriends.stufftracker;
+package benandfriends.stufftracker.utilities;
 
 import java.util.ArrayList;
+
+import benandfriends.stufftracker.models.Item;
 
 /**
  * Created by Benjamin on 3/31/2015.

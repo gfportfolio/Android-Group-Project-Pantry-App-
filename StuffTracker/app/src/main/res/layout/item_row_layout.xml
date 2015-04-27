@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:layout_margin="1dp"
+    android:background="@android:color/white">
+
+    <benandfriends.stufftracker.views.RoundImageView
+        android:id="@+id/icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="6dip"
+        android:src="@drawable/grumpy" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/icon"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:layout_marginStart="10dp"
+        android:paddingTop="5dp"/>
+
+    <TextView
+        android:id="@+id/purchased_on_date"
+        android:layout_toEndOf="@id/icon"
+        android:layout_below="@id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textSize="14sp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/expiration_date"
+        android:layout_toEndOf="@id/icon"
+        android:layout_below="@id/purchased_on_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textSize="14sp"
+        android:layout_marginStart="10dp"
+        android:paddingBottom="5dp"/>
+
+</RelativeLayout>

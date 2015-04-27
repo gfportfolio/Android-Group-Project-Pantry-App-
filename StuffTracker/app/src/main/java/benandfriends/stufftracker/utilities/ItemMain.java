@@ -1,13 +1,12 @@
-
-        package benandfriends.stufftracker;
+package benandfriends.stufftracker.utilities;
 
 /**
  * Created by Benjamin on 4/2/2015.
  */
 public class ItemMain {
-    protected String Title;
-    protected int Count;
-    protected int Image;
+    public String Title;
+    public int Count;
+    public int Image;
 
     public String getTitle() {
         return Title;
