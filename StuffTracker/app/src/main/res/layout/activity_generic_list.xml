@@ -6,15 +6,30 @@
 
     android:background="@color/D100">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:background="@color/D100"
-        android:divider="@color/D700"
-        android:layout_margin="12dp"
-        />
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/search_edit_text"
+            android:layout_gravity="right|top"
+            android:layout_margin="12dp"
+            android:layout_marginBottom="0dp"
+            android:hint="Search" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:background="@color/D100"
+            android:divider="@color/D700"
+            android:layout_margin="12dp"
+            android:layout_marginTop="0dp" />
+    </LinearLayout>
 
     <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab"

@@ -2,6 +2,7 @@ package benandfriends.stufftracker.utilities;
 
 import java.util.ArrayList;
 
+import benandfriends.stufftracker.models.Container;
 import benandfriends.stufftracker.models.Item;
 
 /**
@@ -76,4 +77,22 @@ public class Search {
         return searching;
     }
 
+
+    public static ArrayList<Container> searchListForContainer(ArrayList<Container> ListOThings,String s){
+        ArrayList<Container> searching=new ArrayList<Container>();
+        s=s.toLowerCase();
+        String[] word=s.split(" ");
+        String search="(.*)";
+        for(String ss:word){
+            search+=ss+"(.*)";
+        }
+        for(Container i:ListOThings){
+            String name=i.getName().toLowerCase();
+            if(name.matches(search)){
+                searching.add(i);
+
+            }
+        }
+        return searching;
+    }
 }

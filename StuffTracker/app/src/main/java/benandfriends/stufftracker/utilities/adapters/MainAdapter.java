@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import benandfriends.stufftracker.R;
 import benandfriends.stufftracker.activities.ContainerListActivity;
+import benandfriends.stufftracker.activities.ItemListActivity;
 import benandfriends.stufftracker.utilities.ItemMain;
 
 /**
@@ -54,6 +55,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ItemViewHolder
     }
 
 
+
+
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView vName;
         protected TextView vLocation;
@@ -78,7 +81,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ItemViewHolder
                     context.startActivity(intent);
                 }
                 if (name.equals(context.getString(R.string.items))) {
-                    // Do nothing for now.
+                    /*Intent intent = new Intent(context, ItemListActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra(ItemListActivity.POSITION_KEY, -1);
+                    context.startActivity(intent);*/
                 }
             }
         }

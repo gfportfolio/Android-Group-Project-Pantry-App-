@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 
 import com.melnykov.fab.FloatingActionButton;
 
@@ -19,6 +20,7 @@ public abstract class FabListActivity extends Activity {
     protected RecyclerView.Adapter adapter;
     protected int position;
     protected FloatingActionButton fab;
+    protected EditText searchEditText;
 
 
     @Override
@@ -28,6 +30,7 @@ public abstract class FabListActivity extends Activity {
         this.checkForPosition();
         this.adapter = instantiateRecyclerViewAdapter();
         setUpViews();
+        searchEditText = (EditText) findViewById(R.id.search_edit_text);
     }
 
 
@@ -54,6 +57,8 @@ public abstract class FabListActivity extends Activity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(this.adapter);
+
+
 
         this.instantiateFab(recyclerView);
     }
