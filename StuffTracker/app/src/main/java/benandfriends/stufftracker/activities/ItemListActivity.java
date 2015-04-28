@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.ArrayList;
+
+import benandfriends.stufftracker.Application;
 import benandfriends.stufftracker.R;
+import benandfriends.stufftracker.models.Item;
+import benandfriends.stufftracker.utilities.ItemMain;
 import benandfriends.stufftracker.utilities.adapters.ItemsAdapter;
 
 
@@ -23,6 +28,7 @@ public class ItemListActivity extends FabListActivity {
         if (null != i) {
             parentContainerId = i.getIntExtra(POSITION_KEY, -1);
         }
+
     }
 
 
@@ -37,7 +43,6 @@ public class ItemListActivity extends FabListActivity {
     protected RecyclerView.Adapter instantiateRecyclerViewAdapter() {
         return new ItemsAdapter(this, this.position);
     }
-
 
     @Override
     protected View.OnClickListener getFabClickListener() {

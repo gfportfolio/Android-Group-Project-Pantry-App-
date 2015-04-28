@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import benandfriends.stufftracker.Application;
@@ -21,6 +22,7 @@ import benandfriends.stufftracker.activities.CreateItemActivity;
 import benandfriends.stufftracker.activities.FabListActivity;
 import benandfriends.stufftracker.models.Container;
 import benandfriends.stufftracker.models.Item;
+import benandfriends.stufftracker.utilities.ItemMain;
 
 
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
@@ -97,6 +99,11 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         return parent.getItems().size();
     }
 
+
+    public ArrayList<Item> getItems(){
+        Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
+        return (ArrayList<Item>)parent.getItems() ;
+    }
 
     private void setExpirationText(Item item, ViewHolder holder) {
         Date expiration = item.getDateExpires();

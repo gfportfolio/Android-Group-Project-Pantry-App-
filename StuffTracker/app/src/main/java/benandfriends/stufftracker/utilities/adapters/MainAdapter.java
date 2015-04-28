@@ -54,6 +54,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ItemViewHolder
     }
 
 
+
+
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         protected TextView vName;
         protected TextView vLocation;
