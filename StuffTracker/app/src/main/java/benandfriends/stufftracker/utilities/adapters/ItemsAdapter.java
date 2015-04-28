@@ -34,6 +34,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     private Context context;
     private int parentContainerId;
     private ArrayList<Item> searchList=null;
+    private static ArrayList<Item> allItems;
 
     public ItemsAdapter(Context context, int position) {
         this.context = context;
@@ -68,30 +69,59 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ItemsAdapter.ViewHolder holder, int position) {
         if(searchList==null){
-            Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
-            final Item item = parent.getItems().get(position);
-            final String name = item.getName();
-            final Bitmap image = item.getImage();
+            if(position>=0) {
+                Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
+                final Item item = parent.getItems().get(position);
+                final String name = item.getName();
+                final Bitmap image = item.getImage();
 
-            setExpirationText(item, holder);
-            setPurchasedText(item, holder);
+                setExpirationText(item, holder);
+                setPurchasedText(item, holder);
 
-            holder.titleTextView.setText(name);
-            if (null != image) {
-                holder.imageView.setImageBitmap(image);
-            }
-
-            final int itemPosition = position;
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context, CreateItemActivity.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    i.putExtra(FabListActivity.POSITION_KEY, itemPosition);
-                    i.putExtra(CONTAINER_PARENT_ID_KEY, parentContainerId);
-                    ((Activity) context).startActivityForResult(i, 1);
+                holder.titleTextView.setText(name);
+                if (null != image) {
+                    holder.imageView.setImageBitmap(image);
                 }
-            });
+
+                final int itemPosition = position;
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(context, CreateItemActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.putExtra(FabListActivity.POSITION_KEY, itemPosition);
+                        i.putExtra(CONTAINER_PARENT_ID_KEY, parentContainerId);
+                        ((Activity) context).startActivityForResult(i, 1);
+                    }
+                });
+            }
+            else{//if position is -1 then display all items ever.
+                allItems=getAllItems();
+                final Item item = allItems.get(position);
+                final String name = item.getName();
+                final Bitmap image = item.getImage();
+
+                setExpirationText(item, holder);
+                setPurchasedText(item, holder);
+
+                holder.titleTextView.setText(name);
+                if (null != image) {
+                    holder.imageView.setImageBitmap(image);
+                }
+
+                final int itemPosition = position;
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(context, CreateItemActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        i.putExtra(FabListActivity.POSITION_KEY, itemPosition);
+                        i.putExtra(CONTAINER_PARENT_ID_KEY, parentContainerId);
+                        ((Activity) context).startActivityForResult(i, 1);
+                    }
+                });
+
+            }
         }
         else{
             final Item item = searchList.get(position);
@@ -124,8 +154,13 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         if(searchList==null) {
-            Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
-            return parent.getItems().size();
+            if(parentContainerId>=0) {
+                Container parent = Application.getApplicationInstance(context).getContainers().get(parentContainerId);
+                return parent.getItems().size();
+            }
+            else{
+                return getAllItems().size();
+            }
         }
         else{
             return searchList.size();
@@ -164,10 +199,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
     public void setSearch(ArrayList<Item> search){
         if(search==null || search.size()==0){
             search=null;
-            Log.v("Search","Search size null");
+           // Log.v("Search","Search size null");
         }
         searchList=search;
-        if(search!=null){Log.v("Search","Search size "+search.size());}
+        //if(search!=null){Log.v("Search","Search size "+search.size());}
         this.notifyDataSetChanged();
     }
 
@@ -184,5 +219,15 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
 
 
         return 0;
+    }
+
+
+
+    public ArrayList<Item> getAllItems(){
+        allItems=new ArrayList<Item>();
+        for(Container c: Application.getApplicationInstance(context).getContainers()){
+            allItems.addAll(c.getItems());
+        }
+        return allItems;
     }
 }
